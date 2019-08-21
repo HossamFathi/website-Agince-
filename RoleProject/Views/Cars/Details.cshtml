@@ -1,0 +1,196 @@
+﻿@using RoleProject.View_Model
+@model RoleProject.Models.Car
+
+@{
+    ViewBag.Title = "Details";
+    cars_and_properties list_of_properties = ViewBag.list_of_properties;
+    Dates_For_Car Dates = ViewBag.list_of_Recived_Date;
+    Model.Agince_Of_Car = ViewBag.Agince;
+    int count = 0;
+    int count1 = 0;
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Car</h4>
+    <hr />
+    <img src="~/images/@Model.photo_Car" width="150" height="150" style="border-radius:50%" />
+    <table class="table table-hover" style="background-color:aliceblue">
+
+
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.Type_Of_Car)
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => model.Type_Of_Car)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.Car_Brand)
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => model.Car_Brand)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.Car_Model)
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => model.Car_Model)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.Chassis_No)
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => model.Chassis_No)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.price_in_day)
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => model.price_in_day)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Agince Name
+            </td>
+            <td>
+
+                @Html.DisplayFor(model => model.Agince_Of_Car.name)
+            </td>
+        </tr>
+
+
+
+
+        <tr>
+
+            <th>
+                Properties
+            </th>
+            <th>
+
+            </th>
+        </tr>
+
+        @foreach (var properities in list_of_properties.Property_Name)
+        {
+            <tr>
+                @{count++;
+                }
+                <td>@count - </td>
+                <td>
+                    @properities
+                </td>
+
+            </tr>
+        }
+
+
+    </table>
+
+</div>
+
+   
+<table class="table table-hover" style="background-color:aliceblue">
+
+    <tr>
+        <th>
+            Start  Recived  Date
+        </th>
+        <th>
+            End Recived Date
+        </th>
+        <th>
+            Client
+        </th>
+    </tr>
+
+    @foreach (var start in Dates.Start_Recive)
+    {
+
+        <tr>
+            <td>
+                @start
+                @{count = 0;
+                }
+
+            </td>
+            @foreach (var End in Dates.End_Recive)
+            {
+                if (count > 0)
+                {
+                    continue;
+                }
+                else
+                {
+                    <td>
+                        @End
+                        @{count++;
+                        }
+                        @{count1 = 0;
+                        }
+                    </td>
+                }
+
+                foreach (var client in Dates.Clients)
+                {
+
+                    if (count1 > 0)
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        <td>
+                            @client.Name
+                            @{count1++;
+                            }
+                        </td>
+                    }
+
+                }
+
+
+
+            }
+
+        </tr>
+    }
+
+
+    </tr>
+
+
+
+
+</table>
+
+<p>
+
+    @if (User.IsInRole("Agince"))
+    {
+
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Car_Id });
+    <p>|</p>
+
+}
+
+
+
+    @Html.ActionLink("Back to List", "List_Of_All")
+

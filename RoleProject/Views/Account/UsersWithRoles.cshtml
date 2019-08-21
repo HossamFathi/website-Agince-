@@ -1,0 +1,66 @@
+﻿@model IEnumerable<RoleProject.View_Model.Users_in_Role_ViewModel>
+
+@{
+    ViewBag.Title = "Users With Roles";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}@* search *@
+
+@*@Ajax.ActionLink("Search", "Search", "Account", new AjaxOptions
+{
+    HttpMethod = "get",
+    UpdateTargetId = "create_2",
+    InsertionMode = InsertionMode.Replace
+},
+new
+{
+     @class = "text-danger",
+
+})*@
+
+
+@*@Html.Partial("_Search_Users_Partial")*@
+
+
+<br />
+<br />
+
+@Html.ActionLink("Show aginces Only", "List_Of_All", "Aginces")
+@Html.ActionLink("Show Clients Only", "List_Of_All", "Clients")
+
+<table class="table table-hover ">
+    <thead>
+        <tr>
+            <td><b>Username</b></td>
+            <td><b>Email</b></td>
+            <td><b>City</b></td>
+            <td><b>Street</b></td>
+            <td><b>Phone Number</b></td>
+            <td><b>Roles</b></td>
+        </tr>
+    </thead>
+    @foreach (var user in Model)
+    {
+<tr>
+    <td>@user.UserId</td>
+    <td>@user.Username</td>
+    <td>@user.Email</td>
+    <td>@user.city</td>
+    <td>@user.street</td>
+    <td>@user.phone_number</td>
+    <td>@user.Role</td>
+    <td> @Html.ActionLink("Delete", "Delete", new { id = user.UserId })</td>
+    <td> @Html.ActionLink("Edit", "Edit", new { id = user.UserId })</td>
+</tr>
+
+    }
+</table>
+
+
+@section scripts{
+
+
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+}
+
+
+

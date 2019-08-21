@@ -1,0 +1,110 @@
+﻿@model IEnumerable<RoleProject.Models.Agince>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>aginces</h2>
+
+
+
+
+
+@* sorting *@
+
+@Ajax.ActionLink("sorting", "sorting", "Aginces", new AjaxOptions
+    {
+        HttpMethod = "get",
+        UpdateTargetId = "create_2",
+        InsertionMode = InsertionMode.Replace
+    },
+    new
+    {
+        @class = "btn btn-danger",
+
+    })
+
+     @*search*@
+    @Ajax.ActionLink("Search", "Search", "Aginces", new AjaxOptions
+    {
+        HttpMethod = "get",
+        UpdateTargetId = "create_2",
+        InsertionMode = InsertionMode.Replace
+    },
+    new
+    {
+        @class = "btn btn-danger",
+
+    })
+    <div id="create_2"></div>
+
+
+<table class="table">
+    <tr>
+        <th>
+           Photo
+        </th>
+       
+        <th>
+            @Html.DisplayNameFor(model => model.name)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.phone_number)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.city)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.street)
+        </th>
+
+        <th>option</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+
+
+
+
+<tr>
+    <td>
+        <img src="~/images/@item.photo_Agince" width="150" height="150" style="border-radius:50%" />
+    </td>
+   
+    <td>
+        @Html.DisplayFor(modelItem => item.name)
+    </td>
+
+    <td>
+        @Html.DisplayFor(modelItem => item.phone_number)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.city)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.street)
+    </td>
+    <td>
+        @Html.ActionLink("Details", "List_of_all", "Cars", new { id = item.Agince_ID }, htmlAttributes:
+    new { @class = "btn btn-warning", style = "border-radius:50%" })
+    </td>
+   
+    @if (User.IsInRole("Admin"))
+    {
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.Agince_ID })
+         
+            @Html.ActionLink("Delete", "Delete", new { id = item.Agince_ID })
+        </td>
+    }
+</tr>
+    }
+
+</table>
+@section scripts{
+
+
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+}

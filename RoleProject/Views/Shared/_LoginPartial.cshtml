@@ -1,0 +1,43 @@
+﻿@using Microsoft.AspNet.Identity
+
+
+
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+            </li>
+            <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+
+
+        </ul>
+    }
+    if (User.IsInRole("Agince"))
+    { @Html.Partial("_Search_Car_Partial");
+}
+else if (User.IsInRole("Client"))
+{ @Html.Partial("_Search_Car_Partial");
+}
+else if (User.IsInRole("Admin"))
+{@Html.Partial("_Search_Users_Partial");
+}
+
+
+}
+else
+{
+@Html.Partial("_Search_Car_Partial")
+<ul class="nav navbar-nav navbar-right">
+
+    <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink", @class = "glyphicon glyphicon-user" })</li>
+    <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", @class = " glyphicon glyphicon-log-in" })</li>
+
+</ul>
+
+
+}

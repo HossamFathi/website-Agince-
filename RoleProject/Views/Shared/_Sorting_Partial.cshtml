@@ -1,0 +1,20 @@
+﻿<div class="col-sm-4">
+    @using (Html.BeginForm("Go_sorting", "Cars", FormMethod.Get))
+    {
+
+        @*@Html.Label("Search type", htmlAttributes: new { @class = "text-warning" })*@
+        <select name="num" class="form-control">
+        
+            <option value="1"> sorting by price_in_day</option>
+            <option value="2"> sorting by Car_Brand</option>
+            <option value="3"> sorting by Car_Model</option>
+
+        </select>
+        <br />
+        <input type="submit" value="Sorting" class="btn btn-danger" style="position: relative; left:360px;  bottom:54px;" />
+
+
+
+
+    }
+</div>

@@ -1,0 +1,28 @@
+﻿
+
+
+@if (User.IsInRole("Agince"))
+{
+
+
+
+<li>@Html.ActionLink("Create Car", "Create", "Cars")</li>
+
+}
+
+@if (User.IsInRole("Admin"))
+{
+
+
+
+    <li>@Html.ActionLink("Register Admin", "register", "Account")</li>
+    <li>@Html.ActionLink("Create Role", "Create", "Roles")</li>
+    <li>@Html.ActionLink("Show list of all user", "UsersWithRoles", "Account")</li>
+    <li>@Html.ActionLink("List Of All Roles", "List_Of_All", "Roles")</li>
+    <li>@Html.ActionLink("List Of All Cars", "List_Of_All", "Cars")</li>
+
+
+
+}
+
+

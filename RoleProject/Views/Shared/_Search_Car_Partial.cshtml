@@ -1,0 +1,31 @@
+﻿
+
+
+
+
+    <div class="col-sm-4" >
+        @using (Html.BeginForm("Go_Search", "Cars", FormMethod.Get,htmlAttributes: new {style="position: relative; left:200px; top:15px; " }))
+        {
+            @*@Html.Label("type number", htmlAttributes: new { @class = "text-warning" })
+            @Html.Editor("num", new { htmlAttributes = new { @class = "form-control" } })*@
+
+
+            @*@Html.Label("Search type", htmlAttributes: new { @class = "text-warning" })
+            <select name="num" class="form-control">
+                <option value="1"> search by Type_Of_Car</option>
+                <option value="2"> to search by Car_Model</option>
+                <option value="3">to search by Car_Brand</option>
+                <option value="4">to search by Chassia number</option>
+            </select>
+            <br />*@
+
+            @*@Html.Label("searchItem", htmlAttributes: new { @class = "text-warning" })*@
+            @Html.Editor("searchItem", new { htmlAttributes = new { @class = "form-control" , placeholder="Search"} })
+
+
+            <button type="submit" value="Search" class="btn btn-danger" style="position: relative; left:340px;  bottom:34px; ">
+
+                <i class="glyphicon glyphicon-search"></i>
+            </button>
+        }
+    </div>

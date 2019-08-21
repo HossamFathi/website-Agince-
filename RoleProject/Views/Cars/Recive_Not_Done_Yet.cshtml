@@ -1,0 +1,14 @@
+﻿@model RoleProject.Models.Car
+@{
+    ViewBag.Title = "Recive_Not_Done_Yet";
+}
+
+<h2 class="bg-danger">Car Not Recived Yet</h2>
+<div>
+    @Html.ActionLink("Back to List", "List_Of_all") | 
+    @Html.ActionLink("Recive ", "Recive", new { id =  Model.Car_Id })
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+

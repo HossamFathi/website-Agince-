@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewBag.Title = "DetailsCancel";
+    int id = ViewBag.CarID;
+}
+
+<h2>DetailsCancel</h2>
+@using (Html.BeginForm("CancelReciveFirst", "Cars", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="form-group">
+        <label class="control-label col-md-2">Start Recive Date</label>
+        
+        <div class="col-md-10">
+            <input type="datetime" name="Start_Recive_Date" id="Start_Recive_Date" class="form-control" />
+        </div>
+    </div>
+    
+
+            <input type="hidden" name="id" id="id" value="@id" />
+
+        
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Cancel" class="btn btn-default" />
+        </div>
+    </div>
+
+}
+<div>
+    @Html.ActionLink("Back to List", "List_Of_all")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+

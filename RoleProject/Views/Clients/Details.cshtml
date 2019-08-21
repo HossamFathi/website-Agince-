@@ -1,0 +1,125 @@
+﻿@using RoleProject.Models
+@using RoleProject.View_Model
+@model RoleProject.Models.Client
+
+@{
+    ViewBag.Title = "Details";
+    Recived_Cars_for_Client cars = new Recived_Cars_for_Client();
+        cars.cars = ViewBag.recived_Cars_For_Client;
+}
+
+
+<body>
+   
+    <h2>
+
+        @if (User.IsInRole("Client"))
+        {
+            <p>
+                @Html.ActionLink("Edit", "Edit", new { id = Model.Client_ID }, new { style = "position:absolute;color : Black; right : 250px;" })
+            </p>
+        }
+        Details
+    </h2>
+
+
+    <div>
+
+        <hr />
+
+        <img src="~/images/@Model.photo_Client" width="150" height="150" style="border-radius:50%" />
+        <table class="table" style="border:none">
+
+
+
+
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.Client_ID)</td>
+                <td>
+                    @Html.DisplayFor(model => model.Client_ID)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.Name)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.Name)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.age)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.age)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.number_of_licience)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.number_of_licience)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.date_of_licience_expiry)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.date_of_licience_expiry)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.phone_Number)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.phone_Number)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.city)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.city)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.street)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.street)
+                </td>
+            </tr>
+            <tr>
+                @if (cars.cars != null)
+                {
+                    <td>
+                        @Html.DisplayNameFor(model => model.Booked_Car)
+                    </td>
+                    foreach (Car Cars in cars.cars)
+                    {
+                        <td>
+                            <a href="/cars/Details/@Cars.Car_Id">
+                                <img src="~/images/@Cars.photo_Car" width="150" height="150" style="border-radius:50%" />
+                            </a>
+                        </td>
+
+                    }
+                }
+            </tr>
+        </table>
+    </div>
+
+</body>

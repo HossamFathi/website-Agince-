@@ -1,0 +1,58 @@
+﻿@using Microsoft.AspNet.Identity;
+
+@using RoleProject.Models
+@{
+    var userId = User.Identity.GetUserId();
+
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rate your Car</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body style="background-color:#3e3a3759;  color:black">
+    <div class="navbar  navbar-default navbar-fixed-top" style="margin-bottom:50px;">
+        <div class="container">
+            <div class="navbar-header">
+                @Html.ActionLink("Rent your Cars", "List_of_all", "Cars", new { area = "" }, new { @class = "navbar-brand"  , style ="Font : bold" })
+                @Html.ActionLink("Cars", "List_of_all", "Cars", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Aginces", "List_of_all", "Aginces", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>
+                        @Html.Partial("_CustomLayout")
+
+                    </li>
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+
+
+
+    <section style=" position:fixed;right:0px;top:50px; width: 200px;">
+        <img src="~/images/overlay-bg.jpg" />
+    </section>
+    <div class="container body-content" style="float: left ;margin:100px 50px auto 10px; align-content:center">
+        @RenderBody()
+        
+        <hr />
+        <footer>
+            <p>&copy; Hossam Fathi &amp; Omar Salah &amp; Eyad Zoher</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

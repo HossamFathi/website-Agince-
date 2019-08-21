@@ -1,0 +1,49 @@
+﻿@using RoleProject.Models
+@model IEnumerable<RoleProject.Models.Car_properties>
+
+@{
+    ViewBag.Title = "Index";
+    Car Car = ViewData["car_called"] as Car;
+}
+
+<h2>List of properties</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.proprity_Name)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.proprity_Name)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+                @*@Html.ActionLink("Details", "Details", new { id=item.id }) *@|
+                @Html.ActionLink("Delete", "Delete", new { id = item.id })
+                <a href="/Cars/Add_properity/@item.id">add</a>
+                
+            </td>
+        </tr>
+    }
+
+</table>
+@using (Html.BeginForm("List_OF_all", "Cars", FormMethod.Post, new { enctype = "multipart/form-data" }))
+
+{
+    @Html.AntiForgeryToken()
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Done" class="btn btn-default" />
+        </div>
+    </div>
+
+}

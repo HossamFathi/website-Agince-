@@ -1,0 +1,73 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    
+}
+
+body {
+    background-image: url(images/1-19.jpg);
+}
+
+.hero{
+    position: absolute;
+    width:1400px; 
+    top:350px;
+    left:100px
+    
+}
+
+h1{
+    text-transform: uppercase;
+    color :aliceblue;
+    font-size: 75px;
+    text-align: center;
+    font-family: sans-serif;
+ animation: big 0.3s ease-in-out 1 alternate;
+       transition: all 1.5s ease-in-out;
+}
+
+@keyframes omar2{
+    
+    0%{
+        
+    opacity: 0;
+          
+        
+    }
+   
+    100%{
+        opacity:1; 
+               
+    }
+}
+
+
+@keyframes omar{
+    
+    0%{
+        
+    opacity: 0;
+        top:100px;
+      right: 100px;
+        
+    }
+    100%{
+        opacity:1; 
+          right: 0px;
+    }
+}
+@keyframes big{
+    
+    0%{
+        
+    opacity: 0;
+    
+        transform: translate(20px, 30px)
+    }
+   
+    100%{
+        opacity:1; 
+               transform: translate(0, 0) 
+    }
+}
